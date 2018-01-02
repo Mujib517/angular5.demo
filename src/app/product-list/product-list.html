@@ -1,0 +1,13 @@
+<h1>Products</h1>
+<hr/>
+<div>
+    <div *ngFor="let product of products">
+        <h3>{{product.brand}} {{product.model}}</h3>
+        <div>{{product.price}}</div>
+        <!-- <div>InStock: {{product.inStock ? "Yes":"No"}}</div> -->
+        <div>InStock:
+            <input [disabled]="true" type="checkbox" [checked]="product.inStock" />
+        </div>
+        <hr/>
+    </div>
+</div>
