@@ -1,6 +1,11 @@
+import { Injectable } from "@angular/core";
 
 
+@Injectable()
 export class ProductService{
+
+    constructor(){}
+
     get(){
         return [
             { id: 1, brand: "Nokia", model: "N8", price: 200, inStock: true, lastUpdated: Date.now() },

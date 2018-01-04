@@ -6,11 +6,13 @@ import { HomeComponent } from "./home/home.component";
 import { AboutComponent } from './about/about.component';
 import { ProductListComponent } from "./product-list/product-list.component";
 import { ProductComponent } from './product/product.component';
+import { ProductService } from "./shared/product.service";
 
 
 @NgModule({
     imports: [BrowserModule, FormsModule],
     declarations: [AppComponent, HomeComponent, AboutComponent,ProductListComponent, ProductComponent],
+    providers:[ProductService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
