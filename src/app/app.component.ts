@@ -3,8 +3,11 @@ import { Component } from '@angular/core';
 //Es 6 module
 @Component({
     selector: 'app-root',
-    template: `<app-product-list></app-product-list>`
+    template: `<app-users></app-users>`
 })
 export class AppComponent {
-   
+
+    constructor() {
+       
+    }
 }

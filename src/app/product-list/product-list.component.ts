@@ -9,6 +9,7 @@ export class ProductListComponent {
     products: any[];
 
     constructor(productSvc:ProductService) {
+       
         this.products = productSvc.get();
     }
 }
