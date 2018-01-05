@@ -8,8 +8,12 @@ import { ProductService } from "../shared/product.service";
 export class ProductListComponent {
     products: any[];
 
-    constructor(productSvc:ProductService) {
-       
-        this.products = productSvc.get();
+    constructor(productSvc: ProductService) {
+
+        productSvc.get()
+            .subscribe(
+            res => this.products = res["data"],
+            err => console.log(err)
+            )
     }
 }
