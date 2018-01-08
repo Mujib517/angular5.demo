@@ -1,11 +1,31 @@
-<h1>Products</h1>
+<div class="container">
+    <h1>Products</h1>
+    <!-- Zen coding -->
+    <div class="row">
+        <div class="col-md-5">
+            <div class="form-group">
+                <input type="text" placeholder="Brand" class="form-control" [(ngModel)]="product.brand" />
+            </div>
+            <div class="form-group">
+                <input type="text" placeholder="Model" class="form-control" [(ngModel)]="product.model" />
+            </div>
+            <div class="form-group">
+                <input type="text" placeholder="Price" class="form-control" [(ngModel)]="product.price" />
+            </div>
+            <div class="form-group">
+                InStock:
+                <input type="checkbox" [(ngModel)]="product.inStock" />
+            </div>
+            <div class="form-group">
+                <button (click)="onSave()" class="btn btn-success">Save Product </button>
+            </div>
+        </div>
+    </div>
 
-{{ '01/07/2018' | time}}
-
-<div class="col-md-7">
-    <div *ngFor="let prd of products" class="well">
-        <app-product [product]="prd"></app-product>
+    <div class="col-md-7">
+        <div *ngFor="let prd of products" class="well">
+            <app-product [product]="prd"></app-product>
+        </div>
     </div>
 </div>
-
 <!-- Pipes Uppercase,lowercase, titlecase, currency, date, json, async -->
