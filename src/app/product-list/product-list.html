@@ -1,4 +1,7 @@
 <h1>Products</h1>
+
+{{ '01/07/2018' | time}}
+
 <div class="col-md-7">
     <div *ngFor="let prd of products" class="well">
         <app-product [product]="prd"></app-product>

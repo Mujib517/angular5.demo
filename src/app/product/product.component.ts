@@ -1,4 +1,5 @@
-import { Component,Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-product',
@@ -11,6 +12,9 @@ import { Component,Input } from '@angular/core';
     </div>
     <div>
         {{product.lastUpdated | date:'MM-dd-yyyy hh:ss'}}
+    </div>
+    <div class="pull-right">
+      {{ product.lastUpdated | time }}
     </div>
   `
 })
