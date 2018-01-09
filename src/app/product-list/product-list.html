@@ -1,26 +1,76 @@
 <div class="container">
+
+
+    <!-- required minlen maxlen, pattern -->
+    <div *ngIf="failed" class="alert alert-danger">Failed to save please try again</div>
+    <div *ngIf="success" class="alert alert-success">Successfully saved!</div>
     <h1>Products</h1>
     <!-- Zen coding -->
-    <div class="row">
-        <div class="col-md-5">
-            <div class="form-group">
-                <input type="text" placeholder="Brand" class="form-control" [(ngModel)]="product.brand" />
+    <form novalidate #frm="ngForm">
+
+        <table class="table">
+            <tr>
+                <td>Field</td>
+                <td>Invalid</td>
+                <td>Valid</td>
+                <td>Dirty</td>
+                <td>Pristine</td>
+                <td>Touched</td>
+                <td>Error</td>
+            </tr>
+            <tr>
+                <td>Model</td>
+                <td>{{model.invalid}}</td>
+                <td>{{model.valid}}</td>
+                <td>{{model.dirty}}</td>
+                <td>{{model.pristine}}</td>
+                <td>{{model.touched}}</td>
+                <td>{{model.errors  | json}}</td>
+                <td></td>
+            </tr>
+        </table>
+
+
+
+        <div class="row">
+
+            <div class="col-md-5">
+                <div class="form-group">
+                    <!-- <input type="text" placeholder="Brand" class="form-control" [(ngModel)]="product.brand" /> -->
+                    <select #brand="ngModel" required="true" class="form-control" name="brand" [(ngModel)]="product.brand">
+                        <option value="" selected>--select--</option>
+                        <option>Apple</option>
+                        <option>Nokia</option>
+                        <option>Samsung</option>
+                        <option>Sony</option>
+                    </select>
+                    <span *ngIf="brand.dirty && brand.invalid" class="text-danger">Required</span>
+                </div>
+                <div class="form-group">
+                    <input minlength="3" maxlength="10" #model="ngModel" type="text" required="true" name="model" placeholder="Model" class="form-control"
+                        [(ngModel)]="product.model" />
+                    <span *ngIf="model.touched && model.errors?.required" class="text-danger">Required</span>
+                    <span *ngIf="model.touched && model.errors?.minlength" class="text-danger">Min 3 chars</span>
+                </div>
+                <div class="form-group">
+                    <input #price="ngModel" type="text" required="true" pattern="[0-9]{3}" 
+                    name="price" placeholder="Price" class="form-control" [(ngModel)]="product.price"
+                    />
+                    <!-- safe navigation operator -->
+                    <span *ngIf="price.dirty && price.errors?.required" class="text-danger">Required</span>
+                    <span *ngIf="price.dirty && price.errors?.pattern" class="text-danger">Invalid Price</span>
+                </div>
+                <div class="form-group">
+                    InStock:
+                    <input type="checkbox" [(ngModel)]="product.inStock" name="inStock" />
+                </div>
+                <div class="form-group">
+                    <button [disabled]="frm.invalid" (click)="onSave()" class="btn btn-success">Save Product </button>
+                </div>
             </div>
-            <div class="form-group">
-                <input type="text" placeholder="Model" class="form-control" [(ngModel)]="product.model" />
-            </div>
-            <div class="form-group">
-                <input type="text" placeholder="Price" class="form-control" [(ngModel)]="product.price" />
-            </div>
-            <div class="form-group">
-                InStock:
-                <input type="checkbox" [(ngModel)]="product.inStock" />
-            </div>
-            <div class="form-group">
-                <button (click)="onSave()" class="btn btn-success">Save Product </button>
-            </div>
+
         </div>
-    </div>
+    </form>
 
     <div class="col-md-7">
         <div *ngFor="let prd of products" class="well">

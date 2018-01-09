@@ -7,12 +7,20 @@ import { ProductService } from "../shared/product.service";
 })
 export class ProductListComponent {
     products: any[];
+    failed: boolean;
+    success: boolean;
     product: any = {
         brand: 'Nokia'
     };
 
     constructor(private productSvc: ProductService) {
-        productSvc.get()
+        this.get();
+    }
+
+    // refactoring
+    get() {
+        this.product = {};
+        this.productSvc.get()
             .subscribe(
             res => this.products = res["data"],
             err => console.log(err)
@@ -22,8 +30,11 @@ export class ProductListComponent {
     onSave() {
         this.productSvc.save(this.product)
             .subscribe(
-            () => console.log("Successfully saved"),
-            () => console.log("failed")
+            () => {
+            this.success = true;
+                this.get()
+            },
+            () => this.failed = true
             );
 
         // this.productSvc.save();
