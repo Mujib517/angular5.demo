@@ -11,12 +11,13 @@ import { ProductComponent } from './product/product.component';
 import { ProductService } from "./shared/product.service";
 import { UsersComponent } from './users/users.component';
 import { TimePipe } from './shared/time.pipe';
+import { NewProductComponent } from "./new-product/new-product.component";
 
 
 @NgModule({
     imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule],
     declarations: [AppComponent, HomeComponent, AboutComponent,
-        ProductListComponent, ProductComponent, UsersComponent, TimePipe],
+        ProductListComponent, ProductComponent, UsersComponent, TimePipe, NewProductComponent],
     providers: [ProductService],
     bootstrap: [AppComponent]
 })
