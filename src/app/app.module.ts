@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -14,7 +14,7 @@ import { TimePipe } from './shared/time.pipe';
 
 
 @NgModule({
-    imports: [BrowserModule, FormsModule, HttpClientModule],
+    imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule],
     declarations: [AppComponent, HomeComponent, AboutComponent,
         ProductListComponent, ProductComponent, UsersComponent, TimePipe],
     providers: [ProductService],
