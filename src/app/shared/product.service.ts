@@ -15,4 +15,8 @@ export class ProductService {
     save(product): Observable<any> {
         return this.http.post("https://exp-rest-api.herokuapp.com/api/products/", product);
     }
+
+    getById(id: string): Observable<any> {
+        return this.http.get("https://exp-rest-api.herokuapp.com/api/products/" + id);
+    }
 }

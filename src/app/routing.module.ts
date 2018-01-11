@@ -5,6 +5,7 @@ import { AboutComponent } from "./about/about.component";
 import { ContactComponent } from "./contact/contact.component";
 import { ProductListComponent } from "./product-list/product-list.component";
 import { NewProductComponent } from "./new-product/new-product.component";
+import { ProductDetailComponent } from "./product-detail/product-detail.component";
 
 const ROUTES: Route[] = [
     { path: '', component: HomeComponent },
@@ -12,6 +13,7 @@ const ROUTES: Route[] = [
     { path: 'contact', component: ContactComponent },
     { path: 'products', component: ProductListComponent },
     { path: 'products/new', component: NewProductComponent },
+    { path: 'products/:id', component: ProductDetailComponent },
     { path: '**', component: HomeComponent }
 ];
 

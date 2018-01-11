@@ -15,10 +15,11 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RoutesRecognized } from "@angular/router/src/events";
 import { RoutingModule } from "./routing.module";
+import { ProductDetailComponent } from "./product-detail/product-detail.component";
 
 @NgModule({
     imports: [BrowserModule, FormsModule, ReactiveFormsModule, SharedModule, RoutingModule],
-    declarations: [AppComponent, HomeComponent, AboutComponent,
+    declarations: [AppComponent, HomeComponent, AboutComponent, ProductDetailComponent,
         ProductListComponent, ProductComponent, UsersComponent, NewProductComponent, ContactComponent, HeaderComponent, FooterComponent],
     providers: [],
     bootstrap: [AppComponent]
