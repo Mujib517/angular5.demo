@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { ProductService } from "../shared/product.service";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 
 @Component({
     selector: 'app-new-product',
@@ -40,7 +41,7 @@ export class NewProductComponent {
     success: boolean;
     failed: boolean;
 
-    constructor(private productSvc: ProductService, private fb: FormBuilder) {
+    constructor(private productSvc: ProductService, private fb: FormBuilder, private router: Router) {
         //LHS==RHS. Unit testing
         this.frm = fb.group({
             brand: ['Apple', [Validators.required]],
@@ -57,6 +58,8 @@ export class NewProductComponent {
                 () => {
                     this.success = true;
                     this.frm.reset();
+                    //navigate
+                    this.router.navigate(["/products"]);
                 },
                 () => this.failed = true
                 );
