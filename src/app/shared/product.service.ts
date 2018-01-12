@@ -5,6 +5,9 @@ import { Observable } from "rxjs/Observable";
 
 @Injectable()
 export class ProductService {
+
+    reviews: any[];
+
     constructor(private http: HttpClient) { }
 
     get(): Observable<any> {
