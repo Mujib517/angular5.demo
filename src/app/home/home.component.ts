@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { ConsoleLogger } from "../shared/console.logger.service";
 
 
 @Component({
@@ -6,4 +7,9 @@ import { Component } from "@angular/core";
     templateUrl: './home.html'
 
 })
-export class HomeComponent { }
+export class HomeComponent {
+
+    constructor(private logger: ConsoleLogger) {
+        logger.warn("Took a lot of time to load");
+    }
+}

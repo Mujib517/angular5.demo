@@ -3,11 +3,13 @@ import { TimePipe } from "./time.pipe";
 import { ProductService } from "./product.service";
 import { HttpClientModule } from "@angular/common/http";
 import { ProductResolver } from "./product.resolver";
+import { ConsoleLogger } from "./console.logger.service";
+import { FileLogger } from "./file.logger.service";
 
 @NgModule({
     imports: [HttpClientModule],
     declarations: [TimePipe],
-    providers: [ProductService, ProductResolver],
+    providers: [ProductService, ProductResolver, { provide: ConsoleLogger, useClass: FileLogger }],
     exports: [TimePipe]
 })
 export class SharedModule { }
