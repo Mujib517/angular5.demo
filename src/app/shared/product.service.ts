@@ -3,6 +3,8 @@ import { HttpClient } from "@angular/common/http";
 import 'rxjs/add/operator/retry';
 import { Observable } from "rxjs/Observable";
 import { ConsoleLogger } from "./console.logger.service";
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class ProductService {
@@ -13,7 +15,8 @@ export class ProductService {
     }
 
     get(): Observable<any> {
-        return this.http.get("https://exp-rest-api.herokuapp.com/api/products1/")
+        return this.http.get("https://exp-rest-api.herokuapp.com/api/products/")
+            .catch(err => Observable.throw("Failed"))
             .retry(3);
     }
 
@@ -22,6 +25,7 @@ export class ProductService {
     }
 
     getById(id: string): Observable<any> {
-        return this.http.get("https://exp-rest-api.herokuapp.com/api/products/" + id);
+        return this.http.get("https://exp-rest-api.herokuapp.com/api/products1/" + id)
+                .catch(err => Observable.throw("Failed"));
     }
 }

@@ -14,10 +14,10 @@ export class ProductInterceptor implements HttpInterceptor {
         let newReq = req.clone({ headers: req.headers.set("x-custom", "x-custom-value") });
         return next.handle(newReq)
             .do(res => console.log(res))
-            .catch(err => {
-                console.log("In error interceptor");
-                return Observable.throw(err)
-            }); //passing forward
+            // .catch(err => {
+            //     console.log("In error interceptor");
+            //     return Observable.throw(err)
+            // }); //passing forward
     }
 
 }
