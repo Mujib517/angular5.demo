@@ -13,7 +13,7 @@ export class ProductService {
     }
 
     get(): Observable<any> {
-        return this.http.get("https://exp-rest-api.herokuapp.com/api/products/")
+        return this.http.get("https://exp-rest-api.herokuapp.com/api/products1/")
             .retry(3);
     }
 
