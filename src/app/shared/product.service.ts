@@ -5,6 +5,8 @@ import { Observable } from "rxjs/Observable";
 import { ConsoleLogger } from "./console.logger.service";
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/map';
+import { Product } from "./models/product.model";
 
 @Injectable()
 export class ProductService {
@@ -14,8 +16,9 @@ export class ProductService {
         logger.info("Service is instantiated");
     }
 
-    get(): Observable<any> {
-        return this.http.get("https://exp-rest-api.herokuapp.com/api/products/")
+    get(): Observable<Product[]> {
+        return this.http.get<Product[]>("https://exp-rest-api.herokuapp.com/api/products/")
+            .map(res => res["data"])
             .catch(err => Observable.throw("Failed"))
             .retry(3);
     }
@@ -24,8 +27,8 @@ export class ProductService {
         return this.http.post("https://exp-rest-api.herokuapp.com/api/products/", product);
     }
 
-    getById(id: string): Observable<any> {
-        return this.http.get("https://exp-rest-api.herokuapp.com/api/products1/" + id)
-                .catch(err => Observable.throw("Failed"));
+    getById(id: string): Observable<Product> {
+        return this.http.get<Product>("https://exp-rest-api.herokuapp.com/api/products/" + id)
+            .catch(err => Observable.throw("Failed"));
     }
 }

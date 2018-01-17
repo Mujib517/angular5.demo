@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../shared/product.service';
 import { ActivatedRoute } from '@angular/router';
+import { Product } from '../shared/models/product.model';
 
 @Component({
   selector: 'app-product-detail',
@@ -28,7 +29,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductDetailComponent {
 
-  product = {};
+  product: Product = new Product();
 
 
   constructor(private productSvc: ProductService, private route: ActivatedRoute) {
