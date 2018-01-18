@@ -33,6 +33,11 @@ export class ProductDetailComponent {
 
 
   constructor(private productSvc: ProductService, private route: ActivatedRoute) {
+    console.log("constructor");
+  }
+
+  ngOnInit() {
+    console.log("In init hook");
     let id = this.route.snapshot.params.id;
 
     this.productSvc.getById(id)
