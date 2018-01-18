@@ -9,10 +9,14 @@ import { OnChanges } from '@angular/core';
   
   <h1 #x>{{count}}</h1>
   <button (click)="inc()">Inc</button>
+ <h1 [dlShow]="show">this heading would be hidden</h1>
  
+ <h1 *dlIf="show">If directive demo</h1>
   `,
 })
 export class AboutComponent implements DoCheck, OnChanges {
+
+  show: boolean = false;
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log(changes);
@@ -41,3 +45,9 @@ export class AboutComponent implements DoCheck, OnChanges {
   }
 
 }
+
+
+//ditectives
+//component
+//attribute ngModel ngSwitch, ngClass
+//structural *ngIf,*ngFor
