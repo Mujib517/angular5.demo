@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
   `,
   styles: []
 })
-export class ContactComponent{}
+export class ContactComponent {
+  count: number = 0;
+  count2: number;
+}

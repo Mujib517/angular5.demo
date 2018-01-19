@@ -10,6 +10,7 @@ describe("Math Service", function () {
     });
 
     describe("add()", function () {
+
         it("should add two numbers", function () {
             let result = svc.add(10, 20); //Act
             expect(result).toBe(30); //Assert. Actual==expected
@@ -35,6 +36,13 @@ describe("Math Service", function () {
             expect(result).toBe(10);
         });
     });
+
+    describe("mul()", function () {
+        it('should multiply two numbers', function () {
+            var result = svc.mul(10, 20);
+            expect(result).toBe(200);
+        });
+    })
 
 
     afterEach(function () {
