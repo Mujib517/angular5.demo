@@ -29,6 +29,6 @@ export class ProductService {
 
     getById(id: string): Observable<Product> {
         return this.http.get<Product>("https://exp-rest-api.herokuapp.com/api/products/" + id)
-            .catch(err => Observable.throw("Failed"));
+            //.catch(err => Observable.throw("Failed"));
     }
 }

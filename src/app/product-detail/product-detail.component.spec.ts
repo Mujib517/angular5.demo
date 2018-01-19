@@ -2,7 +2,7 @@ import { ProductDetailComponent } from './product-detail.component';
 import { Observable } from 'rxjs/Observable';
 
 
-fdescribe("Product Detail Component", function () {
+describe("Product Detail Component", function () {
 
     let comp;
     let productSvc;
