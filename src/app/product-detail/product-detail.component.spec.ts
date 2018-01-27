@@ -33,7 +33,6 @@ describe("Product Detail Component", function () {
 
     it('should ger prouct data by calling getById of product Svc', function () {
         comp.ngOnInit();
-
         expect(productSvc.getById).toHaveBeenCalledWith(10);
     });
 });

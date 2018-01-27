@@ -6,10 +6,11 @@ describe("Product Service", function () {
     let logger;
     let http;
 
-    beforeEach(() => {
 
+    beforeEach(() => {
         http = jasmine.createSpyObj(["get"]);
         http.get = jasmine.createSpy("get");
+
 
         logger = jasmine.createSpyObj(["info"]);
 
@@ -17,7 +18,7 @@ describe("Product Service", function () {
     });
 
     it('should make a webservice call to get data by id', () => {
-        
+
         svc.getById("10");
 
         expect(http.get).toHaveBeenCalledWith("https://exp-rest-api.herokuapp.com/api/products/10");
