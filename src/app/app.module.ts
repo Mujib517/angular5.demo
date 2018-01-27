@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from "./home/home.component";
@@ -19,8 +20,20 @@ import { ProductDetailComponent } from "./product-detail/product-detail.componen
 import { ReviewsComponent } from "./reviews/reviews.component";
 import { SpecsComponent } from "./specs/specs.component";
 
+
+import { MatButtonModule, MatInputModule, MatCheckboxModule, MatToolbarModule, MatSliderModule, MatProgressSpinnerModule } from '@angular/material';
+
 @NgModule({
-    imports: [BrowserModule, FormsModule, ReactiveFormsModule, SharedModule, RoutingModule],
+    imports: [BrowserModule, FormsModule, ReactiveFormsModule,
+        BrowserAnimationsModule,
+        MatButtonModule,
+        MatInputModule,
+        MatCheckboxModule,
+        MatToolbarModule,
+        MatSliderModule, MatProgressSpinnerModule,
+        SharedModule, RoutingModule],
+
+
     declarations: [AppComponent, HomeComponent, AboutComponent, ProductDetailComponent,
         ProductListComponent, ProductComponent, UsersComponent,
         NewProductComponent, ContactComponent, HeaderComponent, FooterComponent, ReviewsComponent, SpecsComponent],

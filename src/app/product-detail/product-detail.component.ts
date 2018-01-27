@@ -6,7 +6,10 @@ import { Product } from '../shared/models/product.model';
 @Component({
   selector: 'app-product-detail',
   template: `
-  <div class="panel panel-primary">
+  <mat-spinner *ngIf="loading"></mat-spinner>
+
+
+  <div class="panel panel-primary" *ngIf="!loading">
     <div class="panel-heading">
         <h1>{{product.brand}} {{product.model}} Rating: {{product.avgRating}}*</h1>
     </div>
@@ -28,7 +31,7 @@ import { Product } from '../shared/models/product.model';
   styles: []
 })
 export class ProductDetailComponent {
-
+  loading: boolean = false;
   product: Product = new Product();
 
 
@@ -37,6 +40,7 @@ export class ProductDetailComponent {
   }
 
   ngOnInit() {
+    this.loading = true;
     console.log("In init hook");
     let id = this.route.snapshot.params.id;
 
@@ -45,9 +49,12 @@ export class ProductDetailComponent {
       (res) => {
         this.product = res;
         this.productSvc.reviews = res.reviews;
+        this.loading = false;
       },
-      (err) => console.log(err)
-      )
+      (err) => {
+        console.log(err);
+        this.loading = false;
+      });
   }
 
 
