@@ -7,28 +7,31 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/map';
 import { Product } from "./models/product.model";
+import { environment } from "../../environments/environment";
 
 @Injectable()
 export class ProductService {
 
     reviews: any[];
+    url: string = environment.url;
+
     constructor(private http: HttpClient, private logger: ConsoleLogger) {
         logger.info("Service is instantiated");
     }
 
     get(): Observable<Product[]> {
-        return this.http.get<Product[]>("https://exp-rest-api.herokuapp.com/api/products/")
+        return this.http.get<Product[]>(this.url)
             .map(res => res["data"])
             .catch(err => Observable.throw("Failed"))
             .retry(3);
     }
 
     save(product): Observable<any> {
-        return this.http.post("https://exp-rest-api.herokuapp.com/api/products/", product);
+        return this.http.post(this.url, product);
     }
 
     getById(id: string): Observable<Product> {
-        return this.http.get<Product>("https://exp-rest-api.herokuapp.com/api/products/" + id)
-            //.catch(err => Observable.throw("Failed"));
+        return this.http.get<Product>(this.url + id)
+        //.catch(err => Observable.throw("Failed"));
     }
 }
