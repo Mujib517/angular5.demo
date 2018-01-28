@@ -1,0 +1,13 @@
+export { AppComponent } from './app.component';
+export { HomeComponent } from "./home/home.component";
+export { AboutComponent } from './about/about.component';
+export { ProductListComponent } from "./product-list/product-list.component";
+export { ProductComponent } from './product/product.component';
+export { UsersComponent } from './users/users.component';
+export { NewProductComponent } from "./new-product/new-product.component";
+export { ContactComponent } from './contact/contact.component';
+export { HeaderComponent } from './header/header.component';
+export { FooterComponent } from './footer/footer.component';
+export { ProductDetailComponent } from "./product-detail/product-detail.component";
+export { ReviewsComponent } from "./reviews/reviews.component";
+export { SpecsComponent } from "./specs/specs.component";

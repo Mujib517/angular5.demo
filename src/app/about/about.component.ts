@@ -1,53 +1,39 @@
-import { Component, DoCheck, SimpleChanges } from '@angular/core';
+import { Component } from '@angular/core';
 import { ConsoleLogger } from '../shared/console.logger.service';
 import { SimpleChange } from '@angular/core';
 import { OnChanges } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-about',
   template: `<h1>About Page</h1>
   
-  <h1 #x>{{count}}</h1>
+  <h1 >{{count}}</h1>
   <button (click)="inc()">Inc</button>
- <h1 [dlShow]="show">this heading would be hidden</h1>
- 
- <h1 *dlIf="show">If directive demo</h1>
+
   `,
 })
-export class AboutComponent implements DoCheck, OnChanges {
-
-  show: boolean = false;
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-  }
-  ngDoCheck(): void {
-    //svc calls
-  }
-
+export class AboutComponent {
 
   count: number = 0;
   obj = {
     count: 0
   };
 
-  constructor(private logger: ConsoleLogger) {
-    logger.error("Took an insane amoutn of time to load");
+  //event, web service, setTimeout,setInterval
+  constructor(private http: HttpClient) {
+    this.http.get("https://exp-rest-api.herokuapp.com/api/products")
+      .subscribe(
+      (res) => { this.count = 10000 }
+      );
   }
-
-  ngOnInit() {
-
-  }
-
 
   inc() {
+
+    setTimeout(function () {
+      this.count = 100;
+    }, 2000);
+
     this.count++;
   }
-
 }
-
-
-//ditectives
-//component
-//attribute ngModel ngSwitch, ngClass
-//structural *ngIf,*ngFor

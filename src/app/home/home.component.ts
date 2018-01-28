@@ -8,8 +8,13 @@ import { ConsoleLogger } from "../shared/console.logger.service";
 
 })
 export class HomeComponent {
+    count: number = 0;
 
     constructor(private logger: ConsoleLogger) {
         logger.warn("Took a lot of time to load");
+
+        setInterval(function () {
+            this.count++;
+        }, 1000);
     }
 }
